@@ -10,10 +10,8 @@ export const metadata = {
   description: 'Lista de Todos',
 };
 
-
 export default async function RestTodosPage() {
   // Realiza la llamada a la base de datos directamente en el componente
-  console.log("Fetching todos..."); 
   let todos: Todo[] = [];
   try {
     todos = await prisma.todo.findMany({ orderBy: { description: 'asc' } });
@@ -23,6 +21,7 @@ export default async function RestTodosPage() {
 
   return (
     <div>
+        <span className="text-3xl mb-14">Server actions</span>
       <div className="w-full px-3 mx-5 mb-5">
         <NewTodo />
       </div>
